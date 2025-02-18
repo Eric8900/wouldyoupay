@@ -6,11 +6,13 @@ const inter = Inter({
   variable: "--font-inter-sans",
   subsets: ["latin"],
 });
-import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Would You Pay?",
   description: "How much would you pay per month for these SAAS products?",
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💸</text></svg>",
+  },
 };
 
 export default function RootLayout({
@@ -20,9 +22,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.svg" />
-      </Head>
       <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
