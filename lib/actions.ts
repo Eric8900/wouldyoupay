@@ -11,17 +11,9 @@ export interface ProductData {
 }
 
 export async function getRandomRow(excludedIds: number[]): Promise<{ row: ProductData } | null> {
-    let randomId: number;
-    let row: ProductData | null = null;
-    randomId = Math.floor(Math.random() * (5015 - 6 + 1)) + 6;
-    while (excludedIds.includes(randomId)) {
-        randomId = Math.floor(Math.random() * (5015 - 6 + 1)) + 6;
-    }
 
-    const { data, error } = await supabase
-        .from('products')
-        .select('id, name, link, description, tags, tagline, imagekey')
-        .eq('id', randomId)
+    const { data: row, error } = await supabase
+        .rpc('get_random_product', { excluded_ids: excludedIds })
         .single();
 
     if (error) {
@@ -29,14 +21,7 @@ export async function getRandomRow(excludedIds: number[]): Promise<{ row: Produc
         return null;
     }
 
-    if (!excludedIds.includes(randomId)) {
-        row = data;
-    }
-
-    if (row) {
-        return { row };
-    }
-    return null;
+    return { row: row as ProductData };
 }
 
 export async function incrementViewCount(productId: number): Promise<void> {
@@ -44,13 +29,13 @@ export async function incrementViewCount(productId: number): Promise<void> {
 
     if (error) {
         console.error('Error incrementing view count:', error);
-    } 
+    }
     // else {
     //     console.log(`View count for product ID ${productId} incremented.`);
     // }
 }
 
-export async function submitSurvey(price: number, id : number): Promise<void> {
+export async function submitSurvey(price: number, id: number): Promise<void> {
     const { error } = await supabase.rpc('submit_survey', { price, product_id: id });
 
     if (error) {

@@ -1,5 +1,4 @@
-"use client";
-
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
@@ -7,6 +6,10 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { useState } from "react";
 import Image from "next/image";
 import { ProductData } from "@/lib/actions";
+
+interface SaasShowcaseProps {
+  saasProduct: ProductData;
+}
 
 const ResponsiveIframe = ({ link }: { link: string }) => {
   const [open, setOpen] = useState(false);
@@ -32,9 +35,15 @@ const ResponsiveIframe = ({ link }: { link: string }) => {
   );
 };
 
-export function SaasShowcase({ saasProduct }: { saasProduct: ProductData }) {
+export function SaasShowcase({ saasProduct }: SaasShowcaseProps) {
   return (
-    <div className="relative bg-white shadow-lg rounded-lg p-6 w-full mx-auto flex flex-col gap-9">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+      className="relative bg-white shadow-lg rounded-lg p-6 w-full mx-auto flex flex-col gap-9"
+    >
       <div className="w-full mb-4 lg:mb-0 max-h-[400px] lg:max-h-[700px] overflow-y-auto">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -65,6 +74,6 @@ export function SaasShowcase({ saasProduct }: { saasProduct: ProductData }) {
         <p className="text-gray-700 text-sm mt-4">{saasProduct.description}</p>
       </div>
       <ResponsiveIframe link={saasProduct.link} />
-    </div>
+    </motion.div>
   );
 }

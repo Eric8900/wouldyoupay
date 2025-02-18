@@ -16,9 +16,10 @@ interface SurveySectionProps {
     tags: string[];
   };
   fetchProduct: () => void;
+  excludedIds: number[];
 }
 
-export function SurveySection({ saasProduct, fetchProduct }: SurveySectionProps) {
+export function SurveySection({ saasProduct, fetchProduct, excludedIds }: SurveySectionProps) {
   const [price, setPrice] = useState(NaN)
   const [submitted, setSubmitted] = useState(false)
   const [step, setStep] = useState(1)
@@ -28,6 +29,8 @@ export function SurveySection({ saasProduct, fetchProduct }: SurveySectionProps)
     await submitSurvey(isNaN(price) ? 0.0 : price, saasProduct.id)
     setPrice(NaN)
     setSubmitted(true)
+    excludedIds.push(saasProduct.id);
+    localStorage.setItem('excludedIds', JSON.stringify(excludedIds));
   }
 
   if (submitted) {
@@ -91,6 +94,7 @@ export function SurveySection({ saasProduct, fetchProduct }: SurveySectionProps)
               <Input
                 id="price"
                 min={0}
+                max={1000000}
                 value={isNaN(price) ? "" : price}
                 onChange={(e) => setPrice(parseFloat(e.target.value))}
                 className="peer pe-24 ps-12 text-center border-4 border-primary rounded-none "
