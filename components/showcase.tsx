@@ -1,3 +1,4 @@
+'use client';
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -44,7 +45,7 @@ export function SaasShowcase({ saasProduct }: SaasShowcaseProps) {
       transition={{ duration: 1 }}
       className="relative bg-white shadow-lg rounded-lg p-6 w-full mx-auto flex flex-col gap-9"
     >
-      <div className="w-full mb-4 lg:mb-0 max-h-[400px] lg:max-h-[700px] overflow-y-auto">
+      <div className="w-full mb-4 lg:mb-0 max-h-[280px] sm:max-h-[350px] lg:max-h-[700px] overflow-y-auto">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <Image

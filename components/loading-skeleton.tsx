@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { Skeleton } from "@/components/ui/skeleton";
-import { motion } from 'framer-motion';
 
 const LoadingSkeleton = () => {
     return (
@@ -29,13 +28,8 @@ const LoadingSkeleton = () => {
 
             {/* Bottom split section */}
             <div className="flex-grow h-full flex flex-col justify-end w-full rounded-lg">
-                <motion.div
-                    key="step1"
+                <div
                     className="flex-grow grid grid-cols-2 w-full h-full"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.1 }}
                 >
                     <div
                         className="cursor-pointer flex justify-center items-center text-white text-4xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all ease-in-out w-full"
@@ -47,7 +41,7 @@ const LoadingSkeleton = () => {
                     >
                         nope
                     </div>
-                </motion.div>
+                </div>
             </div>
         </>
     );
