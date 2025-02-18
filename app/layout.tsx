@@ -6,6 +6,7 @@ const inter = Inter({
   variable: "--font-inter-sans",
   subsets: ["latin"],
 });
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Would You Pay?",
@@ -19,9 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} antialiased`}
-      >
+      <Head>
+        <link rel="icon" href="/favicon.svg" />
+      </Head>
+      <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
     </html>

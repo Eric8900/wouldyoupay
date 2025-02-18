@@ -40,14 +40,14 @@ export function SaasShowcase({ saasProduct }: { saasProduct: ProductData }) {
           <div className="flex items-center gap-3">
             <Image
               src={saasProduct.imagekey}
-              alt="product logo"
+              alt="logo"
               width={48}
               height={48}
-              className="w-full h-full rounded-lg"
+              className="rounded-lg"
             />
             <h2 className="text-3xl font-bold">{saasProduct.name}</h2>
           </div>
-          <Button asChild className="rounded-full mt-4">
+          <Button asChild className="rounded-full">
             <a href={saasProduct.link} target="_blank" rel="noopener noreferrer">
               Visit
               <ExternalLink className="ml-2 h-4 w-4" />

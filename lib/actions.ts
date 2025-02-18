@@ -17,7 +17,7 @@ export async function getRandomRow(excludedIds: number[]): Promise<{ row: Produc
     while (excludedIds.includes(randomId)) {
         randomId = Math.floor(Math.random() * (5015 - 6 + 1)) + 6;
     }
-    console.log(randomId)
+
     const { data, error } = await supabase
         .from('products')
         .select('id, name, link, description, tags, tagline, imagekey')
@@ -44,13 +44,14 @@ export async function incrementViewCount(productId: number): Promise<void> {
 
     if (error) {
         console.error('Error incrementing view count:', error);
-    } else {
-        console.log(`View count for product ID ${productId} incremented successfully.`);
-    }
+    } 
+    // else {
+    //     console.log(`View count for product ID ${productId} incremented.`);
+    // }
 }
 
 export async function submitSurvey(price: number, id : number): Promise<void> {
-    const { error } = await supabase.rpc('submit_survey', { price, id });
+    const { error } = await supabase.rpc('submit_survey', { price, product_id: id });
 
     if (error) {
         console.error('Error submitting survey:', error);
