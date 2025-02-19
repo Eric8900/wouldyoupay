@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   // Open Graph (OG) for Facebook, LinkedIn, etc.
   openGraph: {
     title: "Would You Pay?",
-    description: "How much would you pay per month for these SAAS products?",
+    description: "How much would you pay per month for these products?",
     url: "https://wouldyoupay.vercel.app",
     siteName: "Would You Pay?",
     images: [
       {
-        url: "https://yourwebsite.com/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "https://glfrhzonunwevxkhjgqg.supabase.co/storage/v1/object/public/websites/seo/og-image.jpeg",
+        width: 3724,
+        height: 4660,
         alt: "Would You Pay? Preview",
       },
     ],
@@ -33,19 +33,19 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Would You Pay?",
-    description: "How much would you pay per month for these SAAS products?",
-    images: ["https://yourwebsite.com/twitter-image.jpg"], // Replace with actual image
+    description: "How much would you pay per month for these products?",
+    images: ["https://glfrhzonunwevxkhjgqg.supabase.co/storage/v1/object/public/websites/seo/og-image.jpeg"], 
   },
 
   // Favicon & Icons
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💸</text></svg>",
-    apple: "/apple-touch-icon.png", // Apple touch icon (optional)
+    apple: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💸</text></svg>",
   },
 
   // Canonical URL for SEO
   alternates: {
-    canonical: "https://yourwebsite.com", // Replace with actual URL
+    canonical: "https://wouldyoupay.vercel.app"
   },
 };
 
