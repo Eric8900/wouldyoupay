@@ -42,7 +42,7 @@ export function SurveySection({ saasProduct, fetchProduct, excludedIds, setShowC
         localStorage.setItem("excludedIds", JSON.stringify(excludedIds));
         setTimeout(() => {
             setShowConfetti(false);
-        }, 2500);
+        }, 1000);
     };
 
     return (
