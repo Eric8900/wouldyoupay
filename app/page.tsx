@@ -6,11 +6,14 @@ import { SaasShowcase } from "@/components/showcase";
 import { SurveySection } from "@/components/survey-section";
 import { getRandomRow, incrementViewCount, ProductData } from "@/lib/actions";
 import LoadingSkeleton from "@/components/loading-skeleton";
+import { motion } from "framer-motion";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function Home() {
   const [saasProduct, setSaasProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState(true);
   const [excludedIds, setExcludedIds] = useState<number[]>([]);
+  const [showConfetti, setShowConfetti] = useState(false);
   const hasFetched = useRef(false);
 
   useEffect(() => {
@@ -56,8 +59,25 @@ export default function Home() {
           <LoadingSkeleton />
         ) : saasProduct ? (
           <>
+            {showConfetti && (
+              <div className="absolute inset-0 pointer-events-none overflow-hidden z-[100]">
+                {Array.from({ length: 30 }).map((_, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ y: "-10vh", opacity: 1 }}
+                    animate={{ y: "100vh", opacity: 0 }}
+                    transition={{ duration: 1, delay: Math.random() * 0.5, ease: "linear" }}
+                    className="absolute text-6xl"
+                    style={{ left: `${Math.random() * 100}%` }}
+                  >
+                    💰
+                  </motion.div>
+                ))}
+              </div>
+            )}
             <SaasShowcase saasProduct={saasProduct} />
-            <SurveySection saasProduct={saasProduct} fetchProduct={fetchProduct} excludedIds={excludedIds} />
+            <SurveySection saasProduct={saasProduct} fetchProduct={fetchProduct} excludedIds={excludedIds} setShowConfetti={setShowConfetti} />
+            <Toaster/>
           </>
         ) : null}
       </div>
