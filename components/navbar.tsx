@@ -29,7 +29,7 @@ const Navbar = () => {
                     onClick={async () => {
                         await navigator.share({
                             title: "you gotta see this",
-                            text: "how much would you pay for these products?",
+                            text: "you gotta see this",
                             url: "https://wouldyoupay.vercel.app/",
                         });
                     }}
