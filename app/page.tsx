@@ -68,7 +68,7 @@ export default function Home() {
                     animate={{ y: "100vh", opacity: 0 }}
                     transition={{ duration: 1, ease: "linear" }}
                     className="absolute text-6xl"
-                    style={{ left: `${Math.random() * 100}%` }}
+                    style={{ left: `${Math.floor(Math.random() * (97 - 3 + 1)) + 3}%` }}
                   >
                     💰
                   </motion.div>
