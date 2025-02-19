@@ -66,7 +66,7 @@ export default function Home() {
                     key={i}
                     initial={{ y: "-10vh", opacity: 1 }}
                     animate={{ y: "100vh", opacity: 0 }}
-                    transition={{ duration: 1, delay: Math.random() * 0.5, ease: "linear" }}
+                    transition={{ duration: 1, ease: "linear" }}
                     className="absolute text-6xl"
                     style={{ left: `${Math.random() * 100}%` }}
                   >
