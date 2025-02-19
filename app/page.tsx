@@ -55,29 +55,29 @@ export default function Home() {
     <main className="flex min-h-screen flex-col">
       <div className="w-full min-h-screen flex flex-col items-center justify-center">
         <Navbar />
+        {showConfetti && (
+          <div className="absolute inset-0 pointer-events-none overflow-hidden z-[100]">
+            {Array.from({ length: 30 }).map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ y: "-10vh", opacity: 1 }}
+                animate={{ y: "100vh", opacity: 0 }}
+                transition={{ duration: 1, delay: Math.random() * 0.5, ease: "linear" }}
+                className="absolute text-6xl"
+                style={{ left: `${Math.floor(Math.random() * (97 - 3 + 1)) + 3}%` }}
+              >
+                💰
+              </motion.div>
+            ))}
+          </div>
+        )}
         {loading ? (
           <LoadingSkeleton />
         ) : saasProduct ? (
           <>
-            {showConfetti && (
-              <div className="absolute inset-0 pointer-events-none overflow-hidden z-[100]">
-                {Array.from({ length: 30 }).map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ y: "-10vh", opacity: 1 }}
-                    animate={{ y: "100vh", opacity: 0 }}
-                    transition={{ duration: 1, ease: "linear" }}
-                    className="absolute text-6xl"
-                    style={{ left: `${Math.floor(Math.random() * (97 - 3 + 1)) + 3}%` }}
-                  >
-                    💰
-                  </motion.div>
-                ))}
-              </div>
-            )}
             <SaasShowcase saasProduct={saasProduct} />
             <SurveySection saasProduct={saasProduct} fetchProduct={fetchProduct} excludedIds={excludedIds} setShowConfetti={setShowConfetti} />
-            <Toaster/>
+            <Toaster />
           </>
         ) : null}
       </div>
