@@ -13,26 +13,31 @@ const Navbar = () => {
         >
             <h1 className="text-5xl">
                 <Link href="/">
-                💸
+                    💸
                 </Link>
             </h1>
             <div className="flex justify-center items-center gap-4">
                 <Link href="/leaderboard">
-                    <Button 
-                    className="px-4 py-2 text-sm sm:text-lg font-medium"
-                    variant={'outline'}
+                    <Button
+                        className="px-4 py-2 text-sm sm:text-lg font-medium"
+                        variant={'outline'}
                     >
                         Leaderboard 🏆
                     </Button>
                 </Link>
-                <Link href="/addproduct">
-                <Button 
+                <Button
+                    onClick={async () => {
+                        await navigator.share({
+                            title: "you gotta see this",
+                            text: "how much would you pay for these products?",
+                            url: "https://wouldyoupay.vercel.app/",
+                        });
+                    }}
                     className="px-4 py-2 text-sm sm:text-lg font-medium"
                     variant={'outline'}
-                    >
-                        Add Product 🚀
-                    </Button>
-                </Link>
+                >
+                    Share 🚀
+                </Button>
             </div>
         </motion.nav>
     );
